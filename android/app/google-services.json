@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988639601997",
+    "project_id": "my-fl-notes",
+    "storage_bucket": "my-fl-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988639601997:android:36dc099b5912c31cf98304",
+        "android_client_info": {
+          "package_name": "com.hello.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvVpi2U8qIDCwj7_6laBeyQqixmmeHZAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

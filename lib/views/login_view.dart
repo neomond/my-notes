@@ -1,7 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/utilities/show_error_dialog.dart';
-import 'dart:developer' as devtools show log;
+// import 'dart:developer' as devtools show log;
 
 import 'package:mynotes/views/constants/routes.dart';
 
@@ -60,38 +61,38 @@ class _LoginViewState extends State<LoginView> {
               final email = _email.text;
               final password = _password.text;
 
+              // Capture the context before the async operation
+              final capturedContext = context;
+
               try {
                 await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: email,
                   password: password,
                 );
-                Navigator.of(context).pushNamedAndRemoveUntil(
+                Navigator.of(capturedContext).pushNamedAndRemoveUntil(
                   notesRoute,
                   (route) => false,
                 );
-                // devtools.log(userCredential.toString());
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
-                  // devtools.log('User not found');
                   await showErrorDialog(
-                    context,
+                    capturedContext,
                     'User not found',
                   );
                 } else if (e.code == 'wrong-password') {
-                  // devtools.log(e.code);
                   await showErrorDialog(
-                    context,
+                    capturedContext,
                     'Wrong credentials',
                   );
                 } else {
                   await showErrorDialog(
-                    context,
+                    capturedContext,
                     'Error: ${e.code}',
                   );
                 }
               } catch (e) {
                 await showErrorDialog(
-                  context,
+                  capturedContext,
                   e.toString(),
                 );
               }
